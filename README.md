@@ -25,7 +25,7 @@ Criar uma experiência interativa para fãs de e-sports com um chatbot funcional
 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/seuusuario/fan-chatbot.git
+git clone https://github.com/GuiEzzz/fan-chatbot.git
 cd fan-chatbot
 ```
 
