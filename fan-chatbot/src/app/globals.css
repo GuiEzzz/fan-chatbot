@@ -1,1 +1,30 @@
 @import "tailwindcss";
+
+/* Estilos da barra de rolagem para navegadores WebKit/Blink */
+::-webkit-scrollbar {
+  width: 8px; /* Ajuste a largura conforme necessário */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #6b7280; /* Cor cinza-500 do Tailwind como exemplo */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #4b5563; /* Cor cinza-700 do Tailwind como exemplo */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #1f2937; /* Cor gray-800/900 do Tailwind como exemplo para fundo escuro */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-button {
+  display: none; /* Oculta os botões, se preferir */
+}
+
+/* Estilos da barra de rolagem para Firefox (opcional) */
+.scrollable-container { /* Você precisará aplicar essa classe ao elemento com scroll */
+  scrollbar-color: #6b7280 #1f2937; /* thumb track */
+  scrollbar-width: thin;
+}
