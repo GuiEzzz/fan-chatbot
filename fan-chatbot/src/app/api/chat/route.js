@@ -16,7 +16,7 @@ export async function POST(req) {
     const response = await axios.post(
       'https://api.openai.com/v1/chat/completions',
       {
-        model: 'gpt-4.1-nano',
+        model: 'gpt-4.1-mini',
         messages: completeMessages,
       },
       {
