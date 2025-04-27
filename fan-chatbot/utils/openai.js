@@ -1,19 +1,14 @@
 // utils/openai.js
 
-export async function sendMessageToOpenAI(message) {
-  try {
-    const response = await fetch('/api/chat', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ message }),
-    });
+export async function sendMessageToOpenAI(messages) {
+  const response = await fetch('/api/chat', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ messages }),
+  });
 
-    const data = await response.json();
-    return data.response;
-  } catch (error) {
-    console.error('Erro ao enviar mensagem:', error);
-    return 'Erro ao enviar mensagem.';
-  }
+  const data = await response.json();
+  return data.response;
 }

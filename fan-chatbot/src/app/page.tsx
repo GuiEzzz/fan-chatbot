@@ -1,3 +1,5 @@
+'use client';
+
 import Head from 'next/head';
 import ChatBox from '../../components/ChatBox.jsx';
 import dotenv from 'dotenv';

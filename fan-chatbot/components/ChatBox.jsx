@@ -1,32 +1,42 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { sendMessageToOpenAI } from '../utils/openai';
 
 export default function ChatBox() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const chatEndRef = useRef(null);
 
   const handleSend = async () => {
     if (!input.trim()) return;
-
+  
     const newUserMessage = { role: 'user', content: input };
-    setMessages((prev) => [...prev, newUserMessage]);
+    const updatedMessages = [...messages, newUserMessage];
+    setMessages(updatedMessages);
     setInput('');
     setLoading(true);
-
-    const reply = await sendMessageToOpenAI(input);
+  
+    const reply = await sendMessageToOpenAI(updatedMessages);
     const botMessage = { role: 'assistant', content: reply };
     setMessages((prev) => [...prev, botMessage]);
     setLoading(false);
   };
+  
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && input.trim()) {
       handleSend();
     }
   };  
+
+  // Scroll para o final sempre que as mensagens mudarem
+  useEffect(() => {
+    if (chatEndRef.current) {
+      chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages]);
 
   return (
     <div className="w-full max-w-2xl mx-auto bg-[#1A1A1D] text-white rounded-2xl shadow-lg flex flex-col h-[85vh] p-4 border border-[#444]">
@@ -66,6 +76,8 @@ export default function ChatBox() {
         {loading && (
           <p className="text-sm text-gray-400">FURIA está digitando...</p>
         )}
+
+        <div ref={chatEndRef} />
       </div>
 
       <div className="mt-4 flex">
