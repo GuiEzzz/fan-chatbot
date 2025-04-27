@@ -9,6 +9,15 @@ export default function ChatBox() {
   const [loading, setLoading] = useState(false);
   const chatEndRef = useRef(null);
 
+   // Enviar mensagem de boas-vindas assim que o componente carregar
+   useEffect(() => {
+    const welcomeMessage = "Bem-vindo ao FURIA Fan Chatbot! Como posso te ajudar hoje?";
+    setMessages((prev) => [
+      ...prev,
+      { role: 'assistant', content: welcomeMessage },
+    ]);
+    }, []);
+
   const handleSend = async () => {
     if (!input.trim()) return;
   
@@ -40,10 +49,9 @@ export default function ChatBox() {
 
   return (
     <div className="w-full max-w-2xl mx-auto bg-[#1A1A1D] text-white rounded-2xl shadow-lg flex flex-col h-[85vh] p-4 border border-[#444]">
-      <h1 className="text-3xl font-bold mb-4 text-center text-white-400 font-mono">
+      <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300 mb-4 text-center font-poppins drop-shadow-xl">
         FURIA Fan Chatbot
       </h1>
-
       <div className="flex-1 overflow-y-auto space-y-4 p-2 border border-[#333] rounded bg-[#0F0F0F]">
         {messages.map((msg, i) => (
           <div

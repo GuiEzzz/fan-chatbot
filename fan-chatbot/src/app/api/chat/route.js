@@ -3,8 +3,6 @@ import { NextResponse } from 'next/server';
 import axios from 'axios';
 import { FURIA_SYSTEM_PROMPT } from "../../../../utils/constants";
 
-const API_KEY = process.env.STEAM_API_KEY; 
-
 export async function POST(req) {
   try {
     const { messages } = await req.json();
