@@ -1,10 +1,10 @@
 # Fan Chatbot 🤖🎮
 
-Uma interface conversacional voltada para fãs de e-sports, com foco em CS:GO.
+Uma interface conversacional voltada para fãs da FURIA, com foco em CS:GO.
 
 ## 🚀 Objetivo
 
-Criar uma experiência interativa para fãs de e-sports com um chatbot funcional. A ideia é proporcionar respostas divertidas, úteis e rápidas sobre o time, partidas, jogadores ou até mesmo curiosidades.
+Criar uma experiência interativa para fãs da FURIA com um chatbot funcional. A ideia é proporcionar respostas divertidas, úteis e rápidas sobre o time, partidas, jogadores ou até mesmo curiosidades baseadas em prompts enviados pelo usuário.
 
 ## 🧰 Tecnologias utilizadas
 
@@ -15,9 +15,15 @@ Criar uma experiência interativa para fãs de e-sports com um chatbot funcional
 
 ## 💡 Funcionalidades esperadas
 
-- Chat com respostas contextuais
-- Interface amigável e responsiva
-- Possibilidade futura de salvar histórico de conversa
+- Permitir que o usuário envie perguntas relacionadas ao time FURIA.
+- Exibir respostas do chatbot de forma rápida e amigável.
+- Exibir uma mensagem de boas-vindas automática ao carregar o chat.
+- Manter o histórico de mensagens trocadas entre usuário e bot durante a sessão.
+- Scroll automático para a última mensagem enviada/recebida.
+- Apresentar sugestões de perguntas ao lado do chat para guiar o usuário.
+- Layout responsivo: se adaptando bem tanto em desktop quanto em dispositivos menores.
+- Estilização baseada na identidade visual da FURIA (preto, branco e cinza).
+- Interface intuitiva e amigável para torcedores da organização.
 
 ## ⚙️ Como rodar o projeto
 
@@ -46,9 +52,8 @@ npm run dev
 🗂️ Estrutura do projeto
 ```bash
 components/   → Componentes reutilizáveis
-pages/        → Páginas do Next.js
-styles/       → Estilos com Tailwind
-utils/        → Funções auxiliares (ex: chamada à API)
+src/app/      → Diretório do Next.js App Router
+utils/        → Funções utilitárias
 ```
 📦 Deploy
 O projeto será hospedado na Vercel. Após conexão com o GitHub, o deploy é automático com cada push na main.
