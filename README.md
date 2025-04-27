@@ -24,6 +24,7 @@ Criar uma experiência interativa para fãs da FURIA com um chatbot funcional. A
 - Layout responsivo: se adaptando bem tanto em desktop quanto em dispositivos menores.
 - Estilização baseada na identidade visual da FURIA (preto, branco e cinza).
 - Interface intuitiva e amigável para torcedores da organização.
+- Modo Torcida: Deixa o bot mais empolgado para torcer junto com o usuário durante uma partida, proporcionando uma experiência mais imersiva e animada.
 
 ## ⚙️ Como rodar o projeto
 
