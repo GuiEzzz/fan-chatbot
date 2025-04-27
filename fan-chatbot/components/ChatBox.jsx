@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { sendMessageToOpenAI } from '../utils/openai';
+import { motion } from 'framer-motion';
 
 export default function ChatBox() {
   const [messages, setMessages] = useState([]);
@@ -70,19 +71,27 @@ export default function ChatBox() {
            )}
 
             {/* Message bubble */}
-            <div
+            <motion.div
               className={`p-3 rounded-xl max-w-[75%] text-sm font-bold ${
-                msg.role === 'user'
-                  ? 'bg-gray-400 text-black'
-                  : 'bg-gray-700 text-gray-100'
+                msg.role === 'user' ? 'bg-gray-400 text-black' : 'bg-gray-700 text-gray-100'
               }`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
             >
               {msg.content}
-            </div>
+            </motion.div>
           </div>
         ))}
         {loading && (
-          <p className="text-sm text-gray-400">FURIA está digitando...</p>
+          <motion.p
+          className="text-sm text-gray-400"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
+          FURIA está digitando...
+        </motion.p>
         )}
 
         <div ref={chatEndRef} />
@@ -97,7 +106,7 @@ export default function ChatBox() {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
         />
-        <button
+        <motion.button
           onClick={handleSend}
           disabled={!input.trim() || loading}
           className={`px-6 rounded-r-lg font-bold ${
@@ -105,9 +114,11 @@ export default function ChatBox() {
               ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
               : 'bg-gray-400 text-black hover:bg-white-300'
           }`}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
         >
           {loading ? 'Enviando...' : 'Enviar'}
-        </button>
+        </motion.button>
 
       </div>
     </div>
