@@ -54,8 +54,8 @@ export default function ChatBox() {
           >
             {/* Avatar */}
             {msg.role === 'assistant' ? (
-              <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-xl">
-                <img src="/furia-logo.png" alt="Bot" className="w-10 h-10 rounded-full" />
+              <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-xl vertical-align">
+                <img src="/furia-logo.png" alt="Bot" className="w-10 h-10 rounded-full vertical-align" />
               </div>
             ) : (
               null

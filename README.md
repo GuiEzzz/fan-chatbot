@@ -12,7 +12,6 @@ Criar uma experiência interativa para fãs de e-sports com um chatbot funcional
 - [TailwindCSS](https://tailwindcss.com/)
 - [OpenAI API](https://platform.openai.com/)
 - [Vercel](https://vercel.com/) (para deploy)
-- [Firebase (opcional)](https://firebase.google.com/)
 
 ## 💡 Funcionalidades esperadas
 
