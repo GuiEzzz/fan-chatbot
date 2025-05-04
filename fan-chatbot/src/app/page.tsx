@@ -1,8 +1,8 @@
 'use client';
 
 import Head from 'next/head';
-import ChatBox from '../../components/ChatBox.jsx';
-import Suggestions from '../../components/Suggestions.jsx';
+import ChatBox from '../components/ChatBox';
+import Suggestions from '../components/Suggestions.jsx';
 import dotenv from 'dotenv';
 dotenv.config();
 

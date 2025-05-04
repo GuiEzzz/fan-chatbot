@@ -1,7 +1,7 @@
 // app/api/chat/route.js
 import { NextResponse } from 'next/server';
 import axios from 'axios';
-import { FURIA_SYSTEM_PROMPT } from "../../../../utils/constants";
+import { FURIA_SYSTEM_PROMPT } from "../../../utils/constants";
 
 export async function POST(req) {
   try {
