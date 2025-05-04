@@ -68,4 +68,4 @@ O projeto será hospedado na Vercel. Após conexão com o GitHub, o deploy é au
 O projeto será demonstrado em um vídeo de até 3 minutos com funcionalidades básicas e navegação.
 
 ✍️ Autor
-[Guilherme Enz] (https://github.com/GuiEzzz)
+[Guilherme Enz](https://github.com/GuiEzzz)
