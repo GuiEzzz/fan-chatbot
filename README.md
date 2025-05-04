@@ -52,9 +52,14 @@ npm run dev
 
 🗂️ Estrutura do projeto
 ```bash
-components/   → Componentes reutilizáveis
-src/app/      → Diretório do Next.js App Router
-utils/        → Funções utilitárias
+src/
+├── app/ # Estrutura de rotas (App Router)
+│ ├── api/ # Endpoints de API
+│ ├── layout.tsx # Layout principal
+│ ├── page.tsx # Página inicial
+├── components/ # Componentes reutilizáveis (ChatBox, Suggestions)
+├── utils/ # Funções auxiliares e chamadas de API
+.env.local # Variáveis de ambiente (não versionado)
 ```
 📦 Deploy
 O projeto será hospedado na Vercel. Após conexão com o GitHub, o deploy é automático com cada push na main.
@@ -63,4 +68,4 @@ O projeto será hospedado na Vercel. Após conexão com o GitHub, o deploy é au
 O projeto será demonstrado em um vídeo de até 3 minutos com funcionalidades básicas e navegação.
 
 ✍️ Autor
-[Guilherme Enz]
+[Guilherme Enz] (https://github.com/GuiEzzz)
