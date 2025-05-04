@@ -5,8 +5,7 @@ export default function Suggestions() {
     const suggestions = [
       "Ativar/Desativar Modo Torcida",
       "Quem são os jogadores da FURIA?",
-      "Quando é o próximo campeonato?",
-      "Como está a FURIA no campeonato?",
+      "Me conte curiosidades sobre a FURIA.",
       "Quais são as conquistas recentes da FURIA?",
       "Você pode me dizer a história da FURIA?"
     ];
