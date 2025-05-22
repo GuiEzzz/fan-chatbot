@@ -28,3 +28,15 @@
   scrollbar-color: #6b7280 #1f2937; /* thumb track */
   scrollbar-width: thin;
 }
+
+input::-ms-reveal,
+input::-ms-clear,
+input::-webkit-contacts-auto-fill-button,
+input::-webkit-credentials-auto-fill-button {
+  display: none !important;
+}
+
+input[type="password"]::-webkit-credentials-auto-fill-button {
+  visibility: hidden;
+  display: none !important;
+}

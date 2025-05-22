@@ -9,15 +9,19 @@ export default function ChatBox() {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const chatEndRef = useRef(null);
+  const hasSentWelcomeMessage = useRef(false);
 
-   // Enviar mensagem de boas-vindas assim que o componente carregar
-   useEffect(() => {
+  useEffect(() => {
+    if (hasSentWelcomeMessage.current) return;
+  
     const welcomeMessage = "Bem-vindo ao FURIA Fan Chatbot! Como posso te ajudar hoje?";
     setMessages((prev) => [
       ...prev,
       { role: 'assistant', content: welcomeMessage },
     ]);
-    }, []);
+    
+    hasSentWelcomeMessage.current = true;
+  }, []);
 
   const handleSend = async () => {
     if (!input.trim()) return;
