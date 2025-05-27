@@ -13,39 +13,37 @@ export default function ChatBox() {
 
   useEffect(() => {
     if (hasSentWelcomeMessage.current) return;
-  
+
     const welcomeMessage = "Bem-vindo ao FURIA Fan Chatbot! Como posso te ajudar hoje?";
     setMessages((prev) => [
       ...prev,
       { role: 'assistant', content: welcomeMessage },
     ]);
-    
+
     hasSentWelcomeMessage.current = true;
   }, []);
 
   const handleSend = async () => {
     if (!input.trim()) return;
-  
+
     const newUserMessage = { role: 'user', content: input };
     const updatedMessages = [...messages, newUserMessage];
     setMessages(updatedMessages);
     setInput('');
     setLoading(true);
-  
+
     const reply = await sendMessageToOpenAI(updatedMessages);
     const botMessage = { role: 'assistant', content: reply };
     setMessages((prev) => [...prev, botMessage]);
     setLoading(false);
   };
-  
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && input.trim()) {
       handleSend();
     }
-  };  
+  };
 
-  // Scroll para o final sempre que as mensagens mudarem
   useEffect(() => {
     if (chatEndRef.current) {
       chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -53,10 +51,11 @@ export default function ChatBox() {
   }, [messages]);
 
   return (
-    <div className="w-full max-w-2xl mx-auto bg-[#1A1A1D] text-white rounded-2xl shadow-lg flex flex-col h-[85vh] p-4 border border-[#444]">
+    <div className="w-full max-w-2xl mx-auto bg-[#1A1A1D] text-white rounded-2xl shadow-lg flex flex-col h-full p-4 border border-[#444]">
       <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300 mb-4 text-center font-poppins drop-shadow-xl">
         FURIA Fan Chatbot
       </h1>
+
       <div className="flex-1 overflow-y-auto space-y-4 p-2 border border-[#333] rounded bg-[#0F0F0F]">
         {messages.map((msg, i) => (
           <div
@@ -65,16 +64,12 @@ export default function ChatBox() {
               msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'
             }`}
           >
-            {/* Avatar */}
-            {msg.role === 'assistant' ? (
-              <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-xl vertical-align">
-                <img src="/furia-logo.png" alt="Bot" className="w-10 h-10 rounded-full vertical-align" />
+            {msg.role === 'assistant' && (
+              <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-xl">
+                <img src="/furia-logo.png" alt="Bot" className="w-10 h-10 rounded-full" />
               </div>
-            ) : (
-              null
-           )}
+            )}
 
-            {/* Message bubble */}
             <motion.div
               className={`p-3 rounded-xl max-w-[75%] text-sm font-bold ${
                 msg.role === 'user' ? 'bg-gray-400 text-black' : 'bg-gray-700 text-gray-100'
@@ -87,15 +82,16 @@ export default function ChatBox() {
             </motion.div>
           </div>
         ))}
+
         {loading && (
           <motion.p
-          className="text-sm text-gray-400"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-        >
-          FURIA está digitando...
-        </motion.p>
+            className="text-sm text-gray-400"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
+            FURIA está digitando...
+          </motion.p>
         )}
 
         <div ref={chatEndRef} />
@@ -123,7 +119,6 @@ export default function ChatBox() {
         >
           {loading ? 'Enviando...' : 'Enviar'}
         </motion.button>
-
       </div>
     </div>
   );

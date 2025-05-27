@@ -1,5 +1,23 @@
 @import "tailwindcss";
 
+/* Fundo escuro global */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #0F0F0F;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Garante que o container Next.js também tenha fundo escuro */
+#__next {
+  min-height: 100vh;
+  background-color: #0F0F0F;
+}
+
 /* Estilos da barra de rolagem para navegadores WebKit/Blink */
 ::-webkit-scrollbar {
   width: 8px; /* Ajuste a largura conforme necessário */

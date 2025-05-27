@@ -15,12 +15,12 @@ export async function POST(req: NextRequest) {
 
     const res = NextResponse.json({ success: true });
 
-    res.headers.set('Set-Cookie', serialize('authToken', token, {
+    res.headers.set('Set-Cookie', serialize('token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       path: '/',
       maxAge: 60 * 60,
-    }));
+    }));    
 
     return res;
   } else {
