@@ -10,29 +10,38 @@ import { useRouter } from 'next/navigation';
 export default function Home() {
   const router = useRouter();
   const handleLogout = async () => {
-    await fetch('/api/logout', { method: 'POST' });
-    router.push('/'); // volta para tela de login
+    await fetch("/api/logout", { method: "POST" });
+    router.push("/");
   };
+  
   return (
     <>
       <Head>
         <title>FURIA Fan Chatbot</title>
-          <button
+      </Head>
+  
+      <header className="w-full bg-[#1A1A1D]/80 backdrop-blur-md text-white px-6 py-4 flex justify-between items-center shadow-md fixed top-0 left-0 z-50 border-b border-zinc-800">
+        <h1 className="text-lg font-bold tracking-wide">FURIA Fan Chatbot</h1>
+        <button
           onClick={handleLogout}
-          className="bg-red-600 hover:bg-red-700 transition-colors px-4 py-2 rounded-md text-white font-semibold"
+          className="px-4 py-2 rounded-md border border-yellow-500 text-yellow-400 hover:bg-yellow-600 hover:text-white transition-colors font-semibold text-sm"
         >
           Sair
         </button>
-      </Head>
-      <main className="min-h-screen bg-[#0F0F0F] flex items-center justify-center p-10 space-x-0 md:space-x-8 flex-col md:flex-row">
+      </header>
+  
+      {/* Espaço para compensar o cabeçalho fixo */}
+      <div className="mt-28" />
+  
+      <main className="min-h-screen bg-[#0F0F0F] flex items-center justify-center p-20 space-x-0 md:space-x-8 flex-col md:flex-row">
         <div className="flex flex-col items-center w-full max-w-2xl bg-[#1A1A1D] p-6 rounded-lg shadow-md">
           <ChatBox />
         </div>
-
+  
         <div className="flex-shrink-0 w-full max-w-xs mt-4 md:mt-0 md:w-72">
           <Suggestions />
         </div>
       </main>
     </>
-  );
+  );  
 }

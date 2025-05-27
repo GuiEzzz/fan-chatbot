@@ -1,17 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import { serialize } from 'cookie';
+import jwt from 'jsonwebtoken';
+
+const SECRET_KEY = process.env.JWT_SECRET!;
 
 export async function POST(req: NextRequest) {
   const { username, password } = await req.json();
-
-  console.log('LOGIN_USER:', process.env.LOGIN_USER);
-  console.log('LOGIN_PASS:', process.env.LOGIN_PASS);  
 
   const validUser = process.env.LOGIN_USER;
   const validPass = process.env.LOGIN_PASS;
 
   if (username === validUser && password === validPass) {
-    const token = 'fake-auth-token'; // (futuramente pode ser um JWT real)
+    const token = jwt.sign({ username }, SECRET_KEY, { expiresIn: "1h" });
 
     const res = NextResponse.json({ success: true });
 
@@ -19,8 +19,7 @@ export async function POST(req: NextRequest) {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       path: '/',
-      maxAge: 60 * 60 * 8, // 8 horas
-      sameSite: 'lax',
+      maxAge: 60 * 60,
     }));
 
     return res;

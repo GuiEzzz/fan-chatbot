@@ -1,15 +1,23 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
+import jwt from "jsonwebtoken";
+
+const SECRET_KEY = process.env.JWT_SECRET!;
 
 export function middleware(request: NextRequest) {
-  const token = request.cookies.get('authToken')?.value;
+  const token = request.cookies.get("token")?.value;
 
   if (!token) {
-    return NextResponse.redirect(new URL('/', request.url)); // redireciona para login
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
-  return NextResponse.next();
+  try {
+    jwt.verify(token, SECRET_KEY);
+    return NextResponse.next();
+  } catch (error) {
+    return NextResponse.redirect(new URL("/", request.url));
+  }
 }
 
 export const config = {
-  matcher: ['/chat'], // protege apenas a rota /chat
+  matcher: ["/chat"],
 };
