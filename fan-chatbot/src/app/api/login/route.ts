@@ -4,6 +4,9 @@ import { serialize } from 'cookie';
 export async function POST(req: NextRequest) {
   const { username, password } = await req.json();
 
+  console.log('LOGIN_USER:', process.env.LOGIN_USER);
+  console.log('LOGIN_PASS:', process.env.LOGIN_PASS);  
+
   const validUser = process.env.LOGIN_USER;
   const validPass = process.env.LOGIN_PASS;
 
