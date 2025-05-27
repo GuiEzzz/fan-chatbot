@@ -12,6 +12,7 @@ export function middleware(request: NextRequest) {
 
   try {
     jwt.verify(token, SECRET_KEY);
+    console.log(SECRET_KEY);
     return NextResponse.next();
   } catch (error) {
     return NextResponse.redirect(new URL("/", request.url));
